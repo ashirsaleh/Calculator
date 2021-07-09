@@ -13,29 +13,51 @@
 <body>
     <div class="row pt-5">
         <div class="d-flex justify-content-center">
-            <div class="row card col-lg-12 p-3">
-                <form class="">
-                    <div class="container">
+            <div class="card p-3">
+                <div class="container">
+                    <h4 class="text-center">Add two numbers</h4>
+                    <form onsubmit="return false">
                         <div class="row mb-2">
                             <label for="Num1" class="form-label">Enter Value For Number One</label>
-                            <input type="number" class="form-control" placeholder="1000">
+                            <input type="number" id="fnumber" class="form-control" placeholder="1000">
                         </div>
                         <div class="row mb-2">
                             <label for="Num2" class="col-form-label">Enter Value For Number Two</label>
-                            <input type="number" class="form-control" placeholder="100">
+                            <input type="number" id="lnumber" class="form-control" placeholder="100">
                         </div>
                         <div class="d-flex justify-content-between px-5">
                             <h3>The Answer is:</h3>
-                            <h4>10</h4>
+                            <h4 id="answer"></h4>
                         </div>
                         <div class="row mx-5">
-                            <button class="btn btn-secondary btn-sm">Calculate</button>
+                            <button id="calculate" onclick="calculateNumbers(event)"
+                                class="btn btn-secondary btn-sm">Calculate</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        const calculate = document.getElementById("calculate")
+
+        function calculateNumbers(e) {
+            //On enter presed
+            e.preventDefault();
+
+            // get values
+            const fnumber = parseFloat(document.getElementById("fnumber").value);
+            const lnumber = parseFloat(document.getElementById("lnumber").value);
+
+            // actual calculator
+            const tnumber = fnumber + lnumber
+            console.log(tnumber)
+
+            // display answer
+            const ansfield = document.getElementById("answer")
+            ansfield.innerText = tnumber.toLocaleString()
+        }
+    </script>
 </body>
 
 </html>
